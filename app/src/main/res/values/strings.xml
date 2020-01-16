@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">hospital</string>
+    <string-array name="val">
+        <item>Married</item>
+        <item>Unmarried</item>
+        <item>Widower</item>
+        <item>Widow</item>
+    </string-array>
+</resources>

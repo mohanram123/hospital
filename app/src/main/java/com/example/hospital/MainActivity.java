@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.mbms.MbmsErrors;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -58,12 +59,23 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("ADDRESS",address.getText().toString());
         intent.putExtra("AGE",age.getText().toString());
         intent.putExtra("CONTACT",contact.getText().toString());
-        intent.putExtra("DOB",dob.getMinDate());
-        intent.putExtra("GENDER",gender.getCheckedRadioButtonId());
+        String birthday=dob.getDayOfMonth()+"/"+dob.getMonth()+"/"+dob.getYear();
+        intent.putExtra("DOB",birthday);
+        if(gender.getCheckedRadioButtonId()==R.id.male)
+            intent.putExtra("GENDER","male");
+        else if(gender.getCheckedRadioButtonId()==R.id.female)
+            intent.putExtra("GENDER","female");
         intent.putExtra("STATUS",status.getSelectedItem().toString());
-        intent.putExtra("SMOKING",smoking.isChecked());
-        intent.putExtra("ALCOHOL",alcohol.isChecked());
-
+        if(smoking.isChecked() && !(alcohol.isChecked()))
+            intent.putExtra("ADDICTION","smoking");
+        else if(!(smoking.isChecked()) && alcohol.isChecked())
+            intent.putExtra("ADDICTION","alcohol");
+        else if(smoking.isChecked() && alcohol.isChecked())
+            intent.putExtra("ADDICTION","alcohol and smoking");
+        else if(!(smoking.isChecked()) && !(alcohol.isChecked()))
+            intent.putExtra("ADDICTION","None");
+        String timeset=time.getHour()+":"+time.getMinute();
+        intent.putExtra("TIME",timeset);
         startActivity(intent);
     }
 }

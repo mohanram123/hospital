@@ -15,6 +15,7 @@ public class next extends AppCompatActivity {
     TextView age;
     TextView status;
     TextView addiction;
+    TextView time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +30,16 @@ public class next extends AppCompatActivity {
         age=findViewById(R.id.age);
         status=findViewById(R.id.status);
         addiction=findViewById(R.id.addiction);
-
+        time=findViewById(R.id.time);
 
         name.setText(getIntent().getStringExtra("NAME"));
         address.setText(getIntent().getStringExtra("ADDRESS"));
         contact.setText(getIntent().getStringExtra("CONTACT"));
         gender.setText(getIntent().getStringExtra("GENDER"));
         dob.setText(getIntent().getStringExtra("DOB"));
-        age.setText(getIntent().getStringExtra("age"));
-        status.setText(getIntent().getStringExtra("status"));
-        status.setText(getIntent().getStringExtra("addiction"));
+        age.setText(getIntent().getStringExtra("AGE"));
+        status.setText(getIntent().getStringExtra("STATUS"));
+        addiction.setText(getIntent().getStringExtra("ADDICTION"));
+        time.setText(getIntent().getStringExtra("TIME"));
     }
 }
